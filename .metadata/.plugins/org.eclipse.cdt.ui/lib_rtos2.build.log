@@ -1,16 +1,6 @@
-23:49:47 **** Incremental Build of configuration Debug for project lib_rtos2 ****
+19:12:10 **** Incremental Build of configuration Debug for project lib_rtos2 ****
 make all 
-arm-none-eabi-gcc "../test/src/test.c" -mcpu=cortex-m4 -std=gnu11 -g3 -c -I"C:/Users/ipave/Documentos/GitHub/RTOSII/lib_rtos2/lib/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"test/src/test.d" -MT"test/src/test.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "test/src/test.o"
-arm-none-eabi-gcc "../lib/src/eboard.c" -mcpu=cortex-m4 -std=gnu11 -g3 -c -I"C:/Users/ipave/Documentos/GitHub/RTOSII/lib_rtos2/lib/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"lib/src/eboard.d" -MT"lib/src/eboard.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "lib/src/eboard.o"
-arm-none-eabi-gcc "../lib/src/eringbuffer.c" -mcpu=cortex-m4 -std=gnu11 -g3 -c -I"C:/Users/ipave/Documentos/GitHub/RTOSII/lib_rtos2/lib/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"lib/src/eringbuffer.d" -MT"lib/src/eringbuffer.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "lib/src/eringbuffer.o"
-arm-none-eabi-gcc "../lib/src/euart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -c -I"C:/Users/ipave/Documentos/GitHub/RTOSII/lib_rtos2/lib/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"lib/src/euart.d" -MT"lib/src/euart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "lib/src/euart.o"
-arm-none-eabi-gcc "../lib/src/testharness.c" -mcpu=cortex-m4 -std=gnu11 -g3 -c -I"C:/Users/ipave/Documentos/GitHub/RTOSII/lib_rtos2/lib/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"lib/src/testharness.d" -MT"lib/src/testharness.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "lib/src/testharness.o"
-arm-none-eabi-gcc "../lib/src/tinysh_core.c" -mcpu=cortex-m4 -std=gnu11 -g3 -c -I"C:/Users/ipave/Documentos/GitHub/RTOSII/lib_rtos2/lib/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"lib/src/tinysh_core.d" -MT"lib/src/tinysh_core.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "lib/src/tinysh_core.o"
-arm-none-eabi-gcc "../lib/src/tinysh_custom.c" -mcpu=cortex-m4 -std=gnu11 -g3 -c -I"C:/Users/ipave/Documentos/GitHub/RTOSII/lib_rtos2/lib/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"lib/src/tinysh_custom.d" -MT"lib/src/tinysh_custom.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "lib/src/tinysh_custom.o"
-arm-none-eabi-gcc "../lib/src/tinysh_utils.c" -mcpu=cortex-m4 -std=gnu11 -g3 -c -I"C:/Users/ipave/Documentos/GitHub/RTOSII/lib_rtos2/lib/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"lib/src/tinysh_utils.d" -MT"lib/src/tinysh_utils.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "lib/src/tinysh_utils.o"
-arm-none-eabi-ar -r  "liblib_rtos2.a" @"objects.list"  
-Finished building target: liblib_rtos2.a
- 
+make: Nothing to be done for 'all'.
 
-23:49:48 Build Finished. 0 errors, 0 warnings. (took 1s.81ms)
+19:12:10 Build Finished. 0 errors, 0 warnings. (took 465ms)
 

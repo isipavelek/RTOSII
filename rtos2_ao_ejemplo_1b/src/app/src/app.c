@@ -59,26 +59,25 @@
 
 /********************** external functions definition ************************/
 
-void app_init(void)
-{
-  // drivers
-  {
-    driver_init();
-    ELOG("drivers init");
-  }
+void app_init(void) {
+	// drivers
+	{
+		driver_init();
+		ELOG("drivers init");
+	}
 
-  // tasks
-  {
-    BaseType_t status;
-    status = xTaskCreate(task_button, "task_button", 128, NULL, tskIDLE_PRIORITY, NULL);
-    while (pdPASS != status)
-    {
-      // error
-    }
-    ELOG("tasks init");
-  }
+	// tasks
+	{
+		BaseType_t status;
+		status = xTaskCreate(task_button, "task_button", 128, NULL,
+				tskIDLE_PRIORITY, NULL);
+		while (pdPASS != status) {
+			// error
+		}
+		ELOG("tasks init");
+	}
 
-  ELOG("app init");
+	ELOG("app init");
 }
 
 /********************** end of file ******************************************/

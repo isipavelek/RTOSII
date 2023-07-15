@@ -9,6 +9,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\ipave\Documents\GitHub\RTOSII"/>
 			<item value="C:\Users\ipave\Documentos\GitHub\RTOSII\rtos2_ao_ejemplo_1b"/>
 			<item value="C:\Users\ipave\Documentos\GitHub\RTOSII\tp_1_1_catedra_ejemplo"/>
 			<item value="C:\Users\ipave\Documentos\GitHub\RTOSII\rtos2_template"/>

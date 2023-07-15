@@ -49,7 +49,10 @@
 /********************** macros and definitions *******************************/
 
 #define LEDS_APAGADOS 0x00
-#define TIME_BUTTON 100
+#define TIME_BUTTON 10
+#define QUEUE_LENGTH_            (10)
+#define QUEUE_ITEM_SIZE_         (sizeof(uint8_t))
+
 
 /********************** internal data declaration ****************************/
 
@@ -57,14 +60,16 @@
 
 /********************** internal data definition *****************************/
 static uint8_t command_ = LEDS_APAGADOS;
-;
+QueueHandle_t queue;
+
 /********************** external data definition *****************************/
 
 /********************** internal functions definition ************************/
 
-static void button_process(button_t button, bool button_state) {
+static void ao_button_process_(button_t button, bool button_state) {
 
-	command_ =button_state ?(command_ | (1 << button)) : (command_ & (~(1 << button)));
+	 command_ =button_state ? (command_ | (1 << button)) : (command_ & (~(1 << button)));
+	 xQueueSend(queue, (void*)&command_, 0);
 
 }
 
@@ -73,18 +78,18 @@ static void task_button_base_(void *argument) {
 	while (true) {
 		bool button_state;
 		button_state = button_read(button);
-		button_process(button, button_state);
+		ao_button_process_(button, button_state);
 		vTaskDelay((TickType_t) (TIME_BUTTON / portTICK_PERIOD_MS));
-
 	}
 }
 
-static void task_led_(void *argument) {
-
+static void task_ao_led_(void *argument) {
 	while (true) {
-		led_command_send(command_);
+		uint8_t command_local_;
+		if(pdPASS == xQueueReceive(queue, &command_local_, 100)){
+			 led_command_send(command_local_);
+		}
 		vTaskDelay((TickType_t) (TIME_BUTTON / portTICK_PERIOD_MS));
-
 	}
 }
 
@@ -103,29 +108,21 @@ void app_init(void) {
 		ELOG("test init");
 	}
 
-	// OA
-	{
-		ELOG("ao init");
-	}
+	BaseType_t status;
+
+	queue = xQueueCreate(QUEUE_LENGTH_, QUEUE_ITEM_SIZE_);
+	while(NULL == queue)ELOG("Error al crear la Queue");
+	vQueueAddToRegistry(queue,"Queue");
+	status = xTaskCreate(task_ao_led_, "task_led", 128,NULL,tskIDLE_PRIORITY, NULL);
+	// while (pdPASS != status)ELOG("Error al crear el objeto activo");
+	ELOG("ao init");
+
 
 	// tasks
-	{
-		BaseType_t status;
 
-		for (button_t task = 0; task < BUTTON__CNT; task++) {
-			status = xTaskCreate(task_button_base_, "task_button", 128,(void*) task,tskIDLE_PRIORITY, NULL);
-			while (pdPASS != status) {
-				ELOG("Errpo al crear una tarea");
-
-			}
-		}
-
-		status = xTaskCreate(task_led_, "task_led", 128,NULL,tskIDLE_PRIORITY, NULL);
-		while (pdPASS != status) {
-			ELOG("Errpo al crear una tarea");
-
-		}
-		ELOG("tasks init");
+	for (button_t task = 0; task < BUTTON__CNT; task++) {
+		status = xTaskCreate(task_button_base_, "task_button", 128,(void*) task,tskIDLE_PRIORITY, NULL);
+		//while (pdPASS != status)ELOG("Error al crear una tarea");
 	}
 
 	ELOG("app init");

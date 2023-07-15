@@ -47,18 +47,84 @@
 #include "test_mock.h"
 
 /********************** macros and definitions *******************************/
+#define TIME_ACCESS 10
+#define QUEUE_LENGTH_            (10)
+#define QUEUE_ITEM_SIZE_         (sizeof(uint8_t))
 
 /********************** internal data declaration ****************************/
+QueueHandle_t queue;
 
 /********************** internal functions declaration ***********************/
 
 /********************** internal data definition *****************************/
+typedef enum {
+	TUNNEL_FREE,
+	TUNNEL_BUSY,
+}tunnel_state_t;
 
+
+
+tunnel_state_t tunnel_state=TUNNEL_FREE;
 /********************** external data definition *****************************/
 
 /********************** internal functions definition ************************/
 
 /********************** external functions definition ************************/
+
+
+static void task_access_(void *argument) {
+	access_t access = (access_t) argument;
+	while(1){
+		bool access_state;
+		if(pdPASS == xQueueReceive(queue, &access_state, 100)){
+			 if(access_state==false){
+				 access_close(access);
+				 tunnel_state=TUNNEL_FREE;
+			 }
+			 else {
+				 tunnel_state=TUNNEL_BUSY;
+				 access_open(access);
+			 }
+		}
+		vTaskDelay((TickType_t) (TIME_ACCESS / portTICK_PERIOD_MS));
+	}
+}
+
+static void ao_sensor_process(access_t access){
+	bool access_state;
+	access_state=car_sensor_read(access);
+	xQueueSend(queue, (void*)&access_state, 0);
+
+}
+
+
+static void task_ao_access(void *argument) {
+	access_t access = (access_t) argument;
+	while(1){
+		ao_sensor_process(access);
+		vTaskDelay((TickType_t) (TIME_ACCESS / portTICK_PERIOD_MS));
+
+	}
+}
+
+
+static void ao_access_init (void){
+	access_close(ACCESS_EAST);
+	access_close(ACCESS_WEST);
+	queue = xQueueCreate(QUEUE_LENGTH_, QUEUE_ITEM_SIZE_);
+	while (NULL == queue){
+	// error
+	}
+	BaseType_t status;
+	status = xTaskCreate(task_ao_access, "task_access_oa", 128, NULL, tskIDLE_PRIORITY + 1, NULL);
+	while (pdPASS != status)
+	{
+	ELOG("Error!!!");
+	// error
+	}
+
+}
+
 
 void app_init(void)
 {
@@ -76,11 +142,29 @@ void app_init(void)
 
   // OA
   {
+	  ao_access_init();
     ELOG("ao init");
   }
 
   // tasks
   {
+
+	BaseType_t status;
+	status = xTaskCreate(task_access_, "task_access_west", 128, NULL, tskIDLE_PRIORITY + 1, NULL);
+	while (pdPASS != status)
+	{
+	ELOG("Error!!!");
+	// error
+	}
+	status = xTaskCreate(task_access_, "task_access_est", 128, NULL, tskIDLE_PRIORITY + 1, NULL);
+	while (pdPASS != status)
+	{
+	ELOG("Error!!!");
+	// error
+	}
+
+
+
     ELOG("tasks init");
   }
 
