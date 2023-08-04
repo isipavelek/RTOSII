@@ -1,0 +1,21 @@
+19:12:22 **** Incremental Build of configuration Debug for project rtos2_tp_1_1_template ****
+make -j8 all 
+arm-none-eabi-gcc "../src/app/src/app.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I"C:/Users/ipave/Documents/GitHub/RTOSII/rtos2_tp_1_1_template/src/app/inc" -I"C:/Users/ipave/Documents/GitHub/RTOSII/rtos2_tp_1_1_template/src/driver/inc" -I"C:/Users/ipave/Documents/GitHub/RTOSII/rtos2_tp_1_1_template/src/hal/inc" -I"C:/Users/ipave/Documents/GitHub/RTOSII/lib_rtos2/lib/inc" -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/app/src/app.d" -MT"src/app/src/app.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/app/src/app.o"
+../src/app/src/app.c: In function 'app_init':
+../src/app/src/app.c:111:20: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  111 |         BaseType_t status;
+      |                    ^~~~~~
+arm-none-eabi-gcc -o "rtos2_tp_1_1_template.elf" @"objects.list"  -llib_rtos2 -mcpu=cortex-m4 -T"C:\Users\ipave\Documents\GitHub\RTOSII\rtos2_tp_1_1_template\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rtos2_tp_1_1_template.map" -Wl,--gc-sections -static -L"C:\Users\ipave\Documents\GitHub\RTOSII\lib_rtos2\Debug" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: rtos2_tp_1_1_template.elf
+ 
+arm-none-eabi-size   rtos2_tp_1_1_template.elf 
+arm-none-eabi-objdump -h -S  rtos2_tp_1_1_template.elf  > "rtos2_tp_1_1_template.list"
+   text	   data	    bss	    dec	    hex	filename
+  30348	    184	  20984	  51516	   c93c	rtos2_tp_1_1_template.elf
+Finished building: default.size.stdout
+ 
+Finished building: rtos2_tp_1_1_template.list
+ 
+
+19:12:27 Build Finished. 0 errors, 1 warnings. (took 4s.700ms)
+

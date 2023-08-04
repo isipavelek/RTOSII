@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ExternalProjectImportWizard">
+		<item key="WizardProjectsImportPage.STORE_NESTED_PROJECTS" value="true"/>
+	</section>
+	<section name="SmartImportWizard">
+		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
+		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
+		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\ipave\Documents\GitHub\RTOSII"/>
+			<item value="C:\Users\ipave\Documentos\GitHub\RTOSII\rtos2_ao_ejemplo_1b"/>
+			<item value="C:\Users\ipave\Documentos\GitHub\RTOSII\tp_1_1_catedra_ejemplo"/>
+			<item value="C:\Users\ipave\Documentos\GitHub\RTOSII\rtos2_template"/>
+			<item value="C:\Users\ipave\Documentos\GitHub\RTOSII\rtos2_ao_ejemplo_1a"/>
+			<item value="C:\Users\ipave\Documentos\GitHub\RTOSII\rtos2_tp_1_1_template"/>
+			<item value="C:\Users\ipave\Documentos\GitHub\RTOSII\lib_rtos2"/>
+		</list>
+	</section>
+</section>
