@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 9 resources" deleteContents="false" description="Delete 9 resources" element1="/lib_rtos2" element2="/rtos2_ao_ejemplo_1a" element3="/rtos2_ao_ejemplo_1b" element4="/rtos2_ao_ejemplo_2" element5="/rtos2_template" element6="/rtos2_tp_1_1_template" element7="/rtos2_tp_1_2_template" element8="/rtos2_tp_1_3_template" element9="/tp_1_1_catedra_ejemplo" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="9" stamp="1691122701250"/>
+</session>

@@ -52,7 +52,7 @@ static void client_callback_(client_t* pnew_client) {
 			BaseType_t status;
 			bank_.clientCare++;
 			if(pdPASS!=(status = xTaskCreate(task_, "task_bank", 128, NULL, tskIDLE_PRIORITY, &clientCareTask[bank_.clientCare]))){
-				ELOG("ERROR: No pude agregar cajero aun");
+				ELOG("ERROR: No pude agregar cajero");
 			}
 			if ( pdPASS != xQueueSend(bank_.hclient_queue, (void*) &p_cliente_md, portMAX_DELAY) ) {
 				ELOG("ERROR: Sin lugar");

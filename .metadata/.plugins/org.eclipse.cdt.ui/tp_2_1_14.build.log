@@ -1,0 +1,10 @@
+01:23:18 **** Incremental Build of configuration Debug for project tp_2_1_14 ****
+make -j16 all 
+arm-none-eabi-size   tp_2_1_14.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30960	    184	  21592	  52736	   ce00	tp_2_1_14.elf
+Finished building: default.size.stdout
+ 
+
+01:23:18 Build Finished. 0 errors, 0 warnings. (took 187ms)
+

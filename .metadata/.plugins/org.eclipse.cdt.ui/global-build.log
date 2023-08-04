@@ -1,14 +1,16 @@
-19:43:06 **** Incremental Build of configuration Debug for project rtos2_tp_1_2_template ****
-make -j8 all 
-arm-none-eabi-gcc "../src/app/src/app.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I"C:/Users/ipave/Documents/GitHub/RTOSII/rtos2_tp_1_2_template/src/app/inc" -I"C:/Users/ipave/Documents/GitHub/RTOSII/rtos2_tp_1_2_template/src/driver/inc" -I"C:/Users/ipave/Documents/GitHub/RTOSII/rtos2_tp_1_2_template/src/hal/inc" -I"C:/Users/ipave/Documents/GitHub/RTOSII/lib_rtos2/lib/inc" -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/app/src/app.d" -MT"src/app/src/app.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/app/src/app.o"
-arm-none-eabi-gcc -o "rtos2_tp_1_2_template.elf" @"objects.list"  -llib_rtos2 -mcpu=cortex-m4 -T"C:\Users\ipave\Documents\GitHub\RTOSII\rtos2_tp_1_2_template\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rtos2_tp_1_2_template.map" -Wl,--gc-sections -static -L"C:\Users\ipave\Documents\GitHub\RTOSII\lib_rtos2\Debug" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: rtos2_tp_1_2_template.elf
- 
-arm-none-eabi-size   rtos2_tp_1_2_template.elf 
-arm-none-eabi-objdump -h -S  rtos2_tp_1_2_template.elf  > "rtos2_tp_1_2_template.list"
+make -j16 all 
+arm-none-eabi-size   tp_2_3_14.elf 
    text	   data	    bss	    dec	    hex	filename
-  31140	    184	  20936	  52260	   cc24	rtos2_tp_1_2_template.elf
+  31820	    184	  21640	  53644	   d18c	tp_2_3_14.elf
 Finished building: default.size.stdout
  
-Finished building: rtos2_tp_1_2_template.list
+
+01:23:22 Build Finished. 0 errors, 0 warnings. (took 192ms)
+
+01:23:22 **** Incremental Build of configuration Debug for project tp_2_3_14 ****
+make -j16 all 
+arm-none-eabi-size   tp_2_3_14.elf 
+   text	   data	    bss	    dec	    hex	filename
+  31820	    184	  21640	  53644	   d18c	tp_2_3_14.elf
+Finished building: default.size.stdout
  
