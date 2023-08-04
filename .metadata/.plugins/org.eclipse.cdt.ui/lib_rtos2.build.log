@@ -1,6 +1,0 @@
-19:12:10 **** Incremental Build of configuration Debug for project lib_rtos2 ****
-make all 
-make: Nothing to be done for 'all'.
-
-19:12:10 Build Finished. 0 errors, 0 warnings. (took 465ms)
-

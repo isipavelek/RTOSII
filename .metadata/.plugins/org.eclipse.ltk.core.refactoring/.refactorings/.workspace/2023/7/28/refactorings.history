@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Delete 6 resources" deleteContents="false" description="Delete 6 resources" element1="/lib_rtos2" element2="/rtos2_ao_ejemplo_1a" element3="/rtos2_ao_ejemplo_1b" element4="/rtos2_template" element5="/rtos2_tp_1_1_template" element6="/tp_1_1_catedra_ejemplo" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="6" stamp="1689338749147"/>
-</session>
