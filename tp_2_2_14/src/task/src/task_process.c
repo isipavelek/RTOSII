@@ -47,6 +47,7 @@
 #include "driver.h"
 #include "serial.h"
 #include "process.h"
+#include "memory_pool.h"
 
 /********************** macros and definitions *******************************/
 
@@ -58,6 +59,7 @@
 
 /********************** external data definition *****************************/
 
+extern memory_pool_t* const memPool;
 extern QueueHandle_t hqueue;
 
 /********************** internal functions definition ************************/
@@ -72,7 +74,7 @@ void task_process(void* args)
     if(pdPASS == xQueueReceive(hqueue, &serial_message, portMAX_DELAY))
     {
       process(serial_message.pmsg, serial_message.len);
-      vPortFree((void*)serial_message.pmsg);
+  	  memory_pool_block_put( memPool, (void*) serial_message.pmsg);
     }
   }
 }

@@ -67,7 +67,7 @@ static uint8_t memory_pool_memory_[MEMORY_POOL_SIZE(10, MALLOC_MAX_LEN_)];
 /********************** external data definition *****************************/
 
 QueueHandle_t hqueue;
-memory_pool_t* const hmp = &memory_pool_;
+memory_pool_t* const memPool = &memory_pool_;
 
 /********************** internal functions definition ************************/
 void task_init(void){
@@ -113,7 +113,7 @@ void app_init(void)
   {
 	  //  memory pool
 
-	memory_pool_init(hmp, memory_pool_memory_, MEMORY_POOL_SIZE(10, MALLOC_MAX_LEN_), MALLOC_MAX_LEN_);
+	memory_pool_init(memPool, memory_pool_memory_, MEMORY_POOL_SIZE(10, MALLOC_MAX_LEN_), MALLOC_MAX_LEN_);
 	ELOG("Memory pool Init");
   }
 

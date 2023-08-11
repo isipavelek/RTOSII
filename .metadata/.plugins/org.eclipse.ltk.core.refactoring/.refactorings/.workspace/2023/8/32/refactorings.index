@@ -1,0 +1,5 @@
+1691705639168	Rename resource 'rtos2_tp_3_1_template'
+1691705657166	Rename resource 'rtos2_tp_3_2_template'
+1691705670288	Rename resource 'rtos2_tp_3_3_template'
+1691709640606	Delete resource 'tp_3_1_14/src/driver/src/driver_uart.c'
+1691709683983	Delete resource 'tp_3_1_14/src/driver/inc/driver_uart.h'

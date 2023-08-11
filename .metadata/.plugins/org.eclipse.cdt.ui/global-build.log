@@ -1,16 +1,14 @@
+00:49:15 **** Incremental Build of configuration Debug for project tp_3_1_14 ****
 make -j16 all 
-arm-none-eabi-size   tp_2_3_14.elf 
+arm-none-eabi-gcc "../src/driver/src/driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I"C:/Users/ipave/Documentos/GitHub/RTOS2/tp_3_1_14/src/app/inc" -I"C:/Users/ipave/Documentos/GitHub/RTOS2/tp_3_1_14/src/task/inc" -I"C:/Users/ipave/Documentos/GitHub/RTOS2/tp_3_1_14/src/driver/inc" -I"C:/Users/ipave/Documentos/GitHub/RTOS2/tp_3_1_14/src/hal/inc" -I"C:/Users/ipave/Documentos/GitHub/RTOS2/lib_rtos2/lib/inc" -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/driver/src/driver.d" -MT"src/driver/src/driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/driver/src/driver.o"
+arm-none-eabi-gcc -o "tp_3_1_14.elf" @"objects.list"  -llib_rtos2 -mcpu=cortex-m4 -T"C:\Users\ipave\Documentos\GitHub\RTOS2\tp_3_1_14\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="tp_3_1_14.map" -Wl,--gc-sections -static -L"C:\Users\ipave\Documentos\GitHub\RTOS2\lib_rtos2\Debug" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: tp_3_1_14.elf
+ 
+arm-none-eabi-size   tp_3_1_14.elf 
+arm-none-eabi-objdump -h -S  tp_3_1_14.elf  > "tp_3_1_14.list"
    text	   data	    bss	    dec	    hex	filename
-  31820	    184	  21640	  53644	   d18c	tp_2_3_14.elf
+  22448	    104	  19448	  42000	   a410	tp_3_1_14.elf
 Finished building: default.size.stdout
  
-
-01:23:22 Build Finished. 0 errors, 0 warnings. (took 192ms)
-
-01:23:22 **** Incremental Build of configuration Debug for project tp_2_3_14 ****
-make -j16 all 
-arm-none-eabi-size   tp_2_3_14.elf 
-   text	   data	    bss	    dec	    hex	filename
-  31820	    184	  21640	  53644	   d18c	tp_2_3_14.elf
-Finished building: default.size.stdout
+Finished building: tp_3_1_14.list
  

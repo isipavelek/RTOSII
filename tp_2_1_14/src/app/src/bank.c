@@ -75,6 +75,8 @@ static void client_callback_(client_t *pnew_client) {
 			ELOG("Ingresa el cliente a la fila");
 		} else {
 			ELOG("Error, el cliente no tiene lugar en la fila");
+		    vPortFree( (void*) pnew_client2 );
+
 		}
 	}
 }

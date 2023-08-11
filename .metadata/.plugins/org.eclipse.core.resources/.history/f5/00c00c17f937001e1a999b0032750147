@@ -1,0 +1,43 @@
+
+/********************** inclusions *******************************************/
+
+#include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include <string.h>
+
+#include "hal.h"
+#include "driver.h"
+
+/********************** macros and definitions *******************************/
+
+#define TASK_PERIOD_MS_         (10)
+#define BUFFER_RX				(100)
+
+/********************** internal data declaration ****************************/
+
+/********************** internal functions declaration ***********************/
+
+/********************** internal data definition *****************************/
+
+/********************** external data definition *****************************/
+
+extern UART_t Mi_UART;
+
+/********************** internal functions definition ************************/
+
+/********************** external functions definition ************************/
+
+void task_echo(void *args) {
+	size_t caracteres_rx = 0;
+	uint8_t byte[BUFFER_RX];
+	while (true) {
+		while (0 < (caracteres_rx = driver_uart_rx(&Uart3, byte, BUFFER_RX))) {
+			driver_uart_tx(&Uart3, byte, caracteres_rx);
+		}
+
+		vTaskDelay((TickType_t) (TASK_PERIOD_MS_ / portTICK_PERIOD_MS));
+	}
+}
+
+/********************** end of file ******************************************/

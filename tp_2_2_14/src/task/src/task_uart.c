@@ -46,6 +46,7 @@
 #include "hal.h"
 #include "driver.h"
 #include "serial.h"
+#include "memory_pool.h"
 
 /********************** macros and definitions *******************************/
 
@@ -61,10 +62,12 @@
 /********************** external data definition *****************************/
 
 extern QueueHandle_t hqueue;
+extern memory_pool_t* const memPool;
 
 /********************** internal functions definition ************************/
 
 /********************** external functions definition ************************/
+
 
 void task_uart(void* args)
 {
@@ -72,7 +75,8 @@ void task_uart(void* args)
 
   while(true)
   {
-    pmsg = (uint8_t*)pvPortMalloc(MALLOC_MAX_LEN_);
+	pmsg = (uint8_t*) memory_pool_block_get( memPool );
+
     if(NULL != pmsg)
     {
       size_t len = serial_uart_read(pmsg, MALLOC_MAX_LEN_);
@@ -83,13 +87,13 @@ void task_uart(void* args)
         serial_message.len = len;
         if(pdPASS != xQueueSend(hqueue, (void*)&serial_message, 0))
         {
-          vPortFree((void*)pmsg);
+          memory_pool_block_put( memPool, (void*) pmsg);
           vTaskDelay((TickType_t)(TASK_PERIOD_MS_ / portTICK_PERIOD_MS));
         }
       }
       else
       {
-        vPortFree((void*)pmsg);
+      	memory_pool_block_put( memPool, (void*) pmsg);
         vTaskDelay((TickType_t)(TASK_PERIOD_MS_ / portTICK_PERIOD_MS));
       }
     }

@@ -1,0 +1,45 @@
+
+/********************** inclusions *******************************************/
+
+#include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include "hal.h"
+#include "driver_uart_port.h"
+
+/********************** macros and definitions *******************************/
+/********************** internal data declaration ****************************/
+/********************** internal functions declaration ***********************/
+/********************** internal data definition *****************************/
+/********************** external data definition *****************************/
+/********************** internal functions definition ************************/
+/********************** external functions definition ************************/
+
+
+size_t driver_uart_port_hal_tx(UART_Handle_t handler, uint8_t* buffer, size_t size, uint32_t timeout){
+  if(HAL_OK == HAL_UART_Transmit((UART_Handle_t *)handler, buffer, size, timeout))
+  {
+    return size;
+  }
+  return 0;
+}
+
+size_t driver_uart_port_hal_rx(UART_Handle_t handler, uint8_t* buffer, uint32_t timeout)
+{
+  if(HAL_OK == HAL_UART_Receive((UART_Handle_t *)handler, buffer, 1, timeout))
+  {
+    return 1;
+  }
+  return 0;
+}
+
+void driver_uart_port_osal_enter_critical(void) {
+  taskENTER_CRITICAL();
+}
+
+void driver_uart_port_osal_exit_critical(void)
+{
+  taskEXIT_CRITICAL();
+}
+
+/********************** end of file ******************************************/
